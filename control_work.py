@@ -26,7 +26,7 @@ def count_basic_features(arr: list):
     
     df = len(arr)-1
 
-    y_mean = round(sum(arr)/len(arr), 2)
+    y_mean = sum(arr)/len(arr)
 
     print(f"y_mean = {y_mean}")
 
@@ -53,9 +53,9 @@ def count_t(arr: list, element: int, q: float):
     
     t_stat = scpst.t.ppf(q=1-q, df=df)
     
-    print(f"{t} vs {t_stat}")
-    
     if t > t_stat:
+        
+        print(f"Значення критерію Стьюдента: {t} > {t_stat}")
         
         print(f"{element} є грубою помилкою")
         
@@ -64,6 +64,8 @@ def count_t(arr: list, element: int, q: float):
         return y_mean, s_k, True
     
     else:
+        
+        print(f"Значення критерію Стьюдента: {t} < {t_stat}")
         
         print(f"{element} не є грубою помилкою")
         
@@ -92,14 +94,15 @@ def count_delta(arr: list, q: float):
     
     print(f"Δ = {delta*100}%")
     
-
+    
+# array given in the variant
 arr_main = [19.8, 21.01, 21.05, 21.06, 21.08, 22.01, 27.3]
 
+# level of significance
 q = 0.05
 
 main_work(arr_main, arr_main[0])
 
 main_work(arr_main, arr_main[-1])
-
 
 count_delta(arr_main, q)
