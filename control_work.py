@@ -14,6 +14,9 @@ print()
 
 def main_work(arr_main: list, element: float):
     
+    '''Prepares the array for calculating the Student criterion values to determine
+    whether the element is a blunder value. If it is, removes it from the arr_main.'''
+    
     arr = [x for x in arr_main if x != element]
 
     y_mean, s_k, check = count_t(arr, element, q)
@@ -23,6 +26,8 @@ def main_work(arr_main: list, element: float):
         arr_main.remove(element)
         
 def count_basic_features(arr: list):
+    
+    '''Used to calculate mean, sample variance and mean squared error of an array of values.'''
     
     df = len(arr)-1
 
@@ -40,8 +45,10 @@ def count_basic_features(arr: list):
     
     return y_mean, s_k
     
-
 def count_t(arr: list, element: int, q: float):
+    
+    '''Used to calculate and compare Student criterion values with a significance level q.
+    Determines whether the element is a blunder value.'''
     
     print(f"Перевіряємо елемент {element}")
     
@@ -75,6 +82,8 @@ def count_t(arr: list, element: int, q: float):
   
 
 def count_delta(arr: list, q: float):
+    
+    '''Calculates relative error of an array without blunder values.'''
     
     y_mean, s_k = count_basic_features(arr)
     
